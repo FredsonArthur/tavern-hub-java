@@ -34,6 +34,7 @@ src/main/java/com/tavernhub/
 ├── repository/      # Interfaces de abstração e acesso ao banco (MesaRepository, PersonagemRepository)
 ├── controller/      # Controladores REST que expõem e gerenciam as rotas HTTP da API
 └── TavernHubApplication.java # Classe de inicialização e bootstrap do ecossistema Spring
+``
 
 ## 🎯 Funcionalidades & Progresso do Projeto
 
