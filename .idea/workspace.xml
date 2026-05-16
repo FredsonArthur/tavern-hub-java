@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94e30971-ae33-4f67-ab71-02bd2eb90064" name="Changes" comment="docs: centraliza documentação completa e códigos das camadas no README.md">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="94e30971-ae33-4f67-ab71-02bd2eb90064" name="Changes" comment="docs: atualiza roteiro de fases e progresso do projeto no README" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +112,31 @@
       <option name="project" value="LOCAL" />
       <updated>1778972696583</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="docs: atualiza roteiro de fases e progresso do projeto no README">
+      <option name="closed" value="true" />
+      <created>1778973545720</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1778973545720</updated>
+    </task>
+    <task id="LOCAL-00004" summary="docs: atualiza roteiro de fases e progresso do projeto no README">
+      <option name="closed" value="true" />
+      <created>1778973678573</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1778973678573</updated>
+    </task>
+    <task id="LOCAL-00005" summary="docs: atualiza roteiro de fases e progresso do projeto no README">
+      <option name="closed" value="true" />
+      <created>1778973701490</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778973701490</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +145,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: corrige compatibilidade para Java 21 e mapeia entidade Mesa com repositorio" />
     <MESSAGE value="docs: centraliza documentação completa e códigos das camadas no README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: centraliza documentação completa e códigos das camadas no README.md" />
+    <MESSAGE value="docs: atualiza roteiro de fases e progresso do projeto no README" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: atualiza roteiro de fases e progresso do projeto no README" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
