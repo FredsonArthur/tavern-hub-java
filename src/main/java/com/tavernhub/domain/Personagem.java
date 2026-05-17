@@ -1,9 +1,14 @@
 package com.tavernhub.domain;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_personagem")
@@ -17,15 +22,24 @@ public class Personagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "O nome do personagem é obrigatório.")
+    @Size(min = 2, max = 100, message = "O nome do personagem deve ter entre 2 e 100 caracteres.")
     @Column(nullable = false, length = 100)
     private String nome;
 
+    @NotBlank(message = "A classe do personagem é obrigatória.")
+    @Size(max = 50, message = "A classe deve ter no máximo 50 caracteres.")
     @Column(nullable = false, length = 50)
     private String classe;
 
+    @NotNull(message = "O nível é obrigatório.")
+    @Min(value = 1, message = "O nível mínimo permitido é 1.")
+    @Max(value = 20, message = "O nível máximo permitido no sistema é 20.")
     @Column(nullable = false)
     private Integer nivel;
 
+    @NotNull(message = "Os pontos de vida são obrigatórios.")
+    @Min(value = 0, message = "Os pontos de vida não podem ser negativos.")
     @Column(name = "pontos_vida", nullable = false)
     private Integer pontosVida;
 
@@ -81,4 +95,6 @@ public class Personagem {
     public void setMesa(Mesa mesa) { this.mesa = mesa; }
 
     public LocalDateTime getDataCriacao() { return dataCriacao; }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) { this.dataCriacao = dataCriacao; }
 }

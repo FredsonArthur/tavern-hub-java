@@ -1,16 +1,20 @@
 package com.tavernhub.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    // 1. Captura quando o recurso não é encontrado (Fase 3.5)
     @ExceptionHandler(ObjetoNaoEncontradoException.class)
     public ResponseEntity<ErroResposta> tratarObjetoNaoEncontrado(
             ObjetoNaoEncontradoException ex,
@@ -25,5 +29,47 @@ public class GlobalExceptionHandler {
         );
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
+    }
+
+    // 2. Captura erros de validação disparados nas Controllers através do @Valid
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErroResposta> tratarErroValidacaoMecanica(
+            MethodArgumentNotValidException ex,
+            HttpServletRequest request) {
+
+        String mensagens = ex.getBindingResult().getFieldErrors().stream()
+                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .collect(Collectors.joining(" | "));
+
+        ErroResposta erro = new ErroResposta(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                "Erro de Validação nos Dados",
+                mensagens,
+                request.getRequestURI()
+        );
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+    }
+
+    // 3. Captura erros de validação disparados na persistência do JPA/Hibernate
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErroResposta> tratarErroRestricaoBanco(
+            ConstraintViolationException ex,
+            HttpServletRequest request) {
+
+        String mensagens = ex.getConstraintViolations().stream()
+                .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
+                .collect(Collectors.joining(" | "));
+
+        ErroResposta erro = new ErroResposta(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                "Erro de Consistência de Dados",
+                mensagens,
+                request.getRequestURI()
+        );
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
     }
 }
