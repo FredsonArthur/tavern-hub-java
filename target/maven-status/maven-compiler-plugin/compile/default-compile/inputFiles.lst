@@ -1,0 +1,10 @@
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/TavernHubApplication.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/controller/MesaController.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/controller/PersonagemController.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/domain/Mesa.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/domain/Personagem.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/exception/ErroResposta.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/exception/GlobalExceptionHandler.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/exception/ObjetoNaoEncontradoException.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/repository/MesaRepository.java
+/home/tortuga/IdeaProjects/tavern-hub-java/src/main/java/com/tavernhub/repository/PersonagemRepository.java

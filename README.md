@@ -31,17 +31,17 @@ A API segue o padrão rígido de três camadas de responsabilidade clássicas do
 ```text
 src/main/java/com/tavernhub/
 ├── domain/          # Modelos de dados mapeados no ORM (Entidades como Personagem, Mesa)
-├── repository/      # Interfaces de abstração e acesso ao banco (MesaRepository, PersonagemRepository)
+├── repository/      # Interfaces de acesso ao banco (MesaRepository, PersonagemRepository)
+├── exception/       # Classes de tratamento de erros, record de resposta e exceções customizadas
 ├── controller/      # Controladores REST que expõem e gerenciam as rotas HTTP da API
 └── TavernHubApplication.java # Classe de inicialização e bootstrap do ecossistema Spring
 ```
-
 ## 🎯 Funcionalidades & Progresso do Projeto
 
 ### 🎲 Fase 1: O Tabuleiro Estático & Persistência `(Concluída ✔️)`
 - [x] **Setup Inicial:** Configuração do ecossistema do projeto com Spring Boot Starter Web e JPA.
 - [x] **Compatibilidade Java 21:** Configuração do compilador Maven (`pom.xml`) alinhado com o bytecode 65.
-- [x] **Comunicação Base:** Integração assíncrona estabelecida através do retorno nativo de objetos serializados automaticamente em JSON pela Jackson API.
+- [x] **Comunicação Base:** Integração assíncrona estabelecida através do retorno nativo de objetos serializados automaticamente in JSON pela Jackson API.
 - [x] **Log de Atividades:** Registro de tabelas automáticas no console do Hibernate contendo tratamento completo de fuso horário e **Internacionalização para o Horário de Brasília (UTC-3)** via gatilhos `@PrePersist`.
 
 ### 🛡️ Fase 2: O Coração do RPG - CRUD & Entidades `(Concluída ✔️)`
@@ -52,3 +52,8 @@ src/main/java/com/tavernhub/
 ### 🔄 Fase 3: Arquitetura Avançada & Exclusão Lógica `(Concluída ✔️)`
 - [x] **Soft Delete de Personagens:** Mecanismo de exclusão lógica robusto implementado via anotação `@SQLDelete`, impedindo a remoção física e mantendo o histórico de auditoria do banco.
 - [x] **Cláusulas de Restrição Dinâmicas:** Injeção automática da condicional `@SQLRestriction("deletado = false")` em tempo de execução, limpando todas as consultas (`SELECT`) da aplicação de maneira transparente.
+
+### 🚨 Fase 3.5: Tratamento de Exceções Global `(Concluída ✔️)`
+- [x] **Interceptador de Erros:** Criação do `GlobalExceptionHandler` utilizando a anotação `@RestControllerAdvice` para capturar falhas em tempo de execução.
+- [x] **Padronização de Respostas:** Implementação de estruturas de erro imutáveis através de Java Records (`ErroResposta`).
+- [x] **Exceções Customizadas:** Desenvolvimento da classe de negócio `ObjetoNaoEncontradoException` mapeada especificamente para interceptar e retornar o status HTTP 404 (Not Found) de forma limpa.
