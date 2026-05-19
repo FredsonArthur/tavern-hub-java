@@ -9,10 +9,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId; // Importado para garantir a sincronização regional
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    // Centraliza a geração do timestamp sincronizado com o Horário de Brasília (UTC-3)
+    private LocalDateTime obterTimestampBrasilia() {
+        return LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+    }
 
     // 1. Captura quando o recurso não é encontrado (Fase 3.5)
     @ExceptionHandler(ObjetoNaoEncontradoException.class)
@@ -21,7 +27,7 @@ public class GlobalExceptionHandler {
             HttpServletRequest request) {
 
         ErroResposta erro = new ErroResposta(
-                LocalDateTime.now(),
+                obterTimestampBrasilia(),
                 HttpStatus.NOT_FOUND.value(),
                 "Recurso Não Encontrado",
                 ex.getMessage(),
@@ -31,7 +37,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
     }
 
-    // 2. Captura erros de validação disparados nas Controllers através do @Valid
+    // 2. Captura erros de validação disparados nas Controllers através do @Valid (Fase 4)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErroResposta> tratarErroValidacaoMecanica(
             MethodArgumentNotValidException ex,
@@ -42,7 +48,7 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.joining(" | "));
 
         ErroResposta erro = new ErroResposta(
-                LocalDateTime.now(),
+                obterTimestampBrasilia(),
                 HttpStatus.BAD_REQUEST.value(),
                 "Erro de Validação nos Dados",
                 mensagens,
@@ -52,7 +58,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
     }
 
-    // 3. Captura erros de validação disparados na persistência do JPA/Hibernate
+    // 3. Captura erros de validação disparados na persistência direta do JPA/Hibernate
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ErroResposta> tratarErroRestricaoBanco(
             ConstraintViolationException ex,
@@ -63,7 +69,7 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.joining(" | "));
 
         ErroResposta erro = new ErroResposta(
-                LocalDateTime.now(),
+                obterTimestampBrasilia(),
                 HttpStatus.BAD_REQUEST.value(),
                 "Erro de Consistência de Dados",
                 mensagens,

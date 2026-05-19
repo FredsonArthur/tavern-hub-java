@@ -1,10 +1,10 @@
 com/tavernhub/exception/GlobalExceptionHandler.class
 com/tavernhub/controller/PersonagemController.class
+com/tavernhub/domain/Personagem.class
+com/tavernhub/repository/MesaRepository.class
 com/tavernhub/TavernHubApplication.class
 com/tavernhub/controller/MesaController.class
-com/tavernhub/domain/Personagem.class
 com/tavernhub/exception/ObjetoNaoEncontradoException.class
 com/tavernhub/repository/PersonagemRepository.class
-com/tavernhub/repository/MesaRepository.class
 com/tavernhub/exception/ErroResposta.class
 com/tavernhub/domain/Mesa.class

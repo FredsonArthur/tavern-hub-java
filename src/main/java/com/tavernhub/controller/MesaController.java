@@ -2,6 +2,7 @@ package com.tavernhub.controller;
 
 import com.tavernhub.domain.Mesa;
 import com.tavernhub.repository.MesaRepository;
+import jakarta.validation.Valid; // Importação crucial para ativar as validações
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ public class MesaController {
 
     private final MesaRepository mesaRepository;
 
-    // Injeção de dependência via construtor (o Spring cuida disso sozinho)
+    // Injeção de dependência via construtor
     public MesaController(MesaRepository mesaRepository) {
         this.mesaRepository = mesaRepository;
     }
@@ -25,9 +26,9 @@ public class MesaController {
         return mesaRepository.findAll();
     }
 
-    // Rota POST: Cria uma nova mesa na taverna
+    // Rota POST: Cria uma nova mesa na taverna aplicando as validações da Fase 4
     @PostMapping
-    public ResponseEntity<Mesa> criar(@RequestBody Mesa mesa) {
+    public ResponseEntity<Mesa> criar(@Valid @RequestBody Mesa mesa) { // @Valid adicionado aqui
         Mesa novaMesa = mesaRepository.save(mesa);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaMesa);
     }
