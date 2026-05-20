@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/personagens")
+@CrossOrigin("*") // Libera o acesso CORS para o seu frontend JavaScript separado conectar com segurança
 public class PersonagemController {
 
     private final PersonagemRepository personajeRepository; // Mantido o nome padronizado do atributo do construtor original

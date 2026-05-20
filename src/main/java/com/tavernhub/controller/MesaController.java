@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/mesas")
+@CrossOrigin("*") // Libera o acesso CORS para o seu frontend JavaScript separado conectar com segurança
 public class MesaController {
 
     private final MesaRepository mesaRepository;

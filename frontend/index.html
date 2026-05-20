@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TavernHub — Painel Web</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏰 TavernHub</h1>
+            <p>Seu Dashboard de Sessão de RPG integrado via API REST</p>
+        </header>
+
+        <main>
+            <section class="form-container">
+                <h2>Criar Nova Mesa de Jogo</h2>
+                <form id="formMesa">
+                    <div class="input-group">
+                        <label for="nomeMesa">Nome da Mesa:</label>
+                        <input type="text" id="nomeMesa" placeholder="Ex: Crônicas de Eldoria" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="sistemaMesa">Sistema de RPG:</label>
+                        <input type="text" id="sistemaMesa" placeholder="Ex: D&D 5e / Tormenta20" required>
+                    </div>
+                    <button type="submit" class="btn">Conjurar Mesa ✨</button>
+                </form>
+            </section>
+
+            <section>
+                <h2>Mesas Ativas no Reino</h2>
+                <div id="gridMesas" class="grid-mesas">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

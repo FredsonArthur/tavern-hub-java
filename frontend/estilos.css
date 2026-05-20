@@ -1,0 +1,148 @@
+/* Configuração geral da página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Fundo grafite bem escuro */
+    color: #e0e0e0;           /* Texto claro para não cansar os olhos */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Cabeçalho do painel */
+header {
+    border-bottom: 2px solid #ff9800; /* Linha divisória laranja/ouro */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h1 {
+    color: #ff9800;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #fff;
+    border-left: 4px solid #ff9800; /* Detalhe vertical elegante ao lado dos títulos */
+    padding-left: 10px;
+}
+
+/* Painel do Formulário de Criação */
+.form-container {
+    background-color: #1e1e1e; /* Caixa um pouco mais clara que o fundo */
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #b3b3b3;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+    box-sizing: border-box; /* Garante que o padding não quebre a largura */
+}
+
+/* Quando o usuário clica para digitar no campo */
+.input-group input:focus {
+    border-color: #ff9800;
+    outline: none;
+}
+
+/* O Grid que vai organizar as mesas em colunas automáticas */
+.grid-mesas {
+    display: block; /* Organização flexível por blocos */
+    margin-top: 20px;
+}
+
+/* Cartão (Card) de cada Mesa individual */
+.card-mesa {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+/* Efeito visual ao passar o rato por cima do card */
+.card-mesa:hover {
+    transform: translateY(-2px);
+    border-color: #ff9800;
+}
+
+.card-mesa h3 {
+    margin-top: 0;
+    color: #ff9800;
+}
+
+/* Botões */
+.btn {
+    background-color: #ff9800;
+    color: #121212;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #e68a00;
+}
+
+.btn-ver {
+    background-color: transparent;
+    color: #ff9800;
+    border: 1px solid #ff9800;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 15px;
+    transition: all 0.2s;
+}
+
+.btn-ver:hover {
+    background-color: #ff9800;
+    color: #121212;
+}
+
+/* Mensagens de estado vazio ou erro */
+.aviso-vazio {
+    background-color: #2a1b0c; /* Tom marrom escuro rústico */
+    border: 1px dashed #ff9800;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.erro {
+    color: #ff5252;
+    text-align: center;
+    padding: 20px;
+}
