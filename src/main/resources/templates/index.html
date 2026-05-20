@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TavernHub — Painel do Mestre</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            border-bottom: 2px solid #ff9800;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h1 { margin: 0; color: #ff9800; }
+        .grid-mesas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card-mesa {
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .card-mesa:hover {
+            transform: translateY(-5px);
+            border-color: #ff9800;
+        }
+        .card-mesa h3 { margin-top: 0; color: #fff; }
+        .btn {
+            display: inline-block;
+            background-color: #ff9800;
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .aviso-vazio {
+            background-color: #332211;
+            border: 1px dashed #ff9800;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏰 TavernHub — Suas Mesas de RPG</h1>
+            <p>A taverna mais segura e bem coordenada de todo o reino!</p>
+        </header>
+
+        <div class="grid-mesas" th:if="${!mesas.empty}">
+            <div class="card-mesa" th:each="mesa : ${mesas}">
+                <h3 th:text="${mesa.nome}">Nome da Mesa</h3>
+                <p><strong>Sistema:</strong> <span th:text="${mesa.sistema}">D&D 5e</span></p>
+                <a th:href="@{/vistas/personagens/mesa/{id}(id=${mesa.id})}" class="btn">Ver Personagens</a>
+            </div>
+        </div>
+
+        <div class="aviso-vazio" th:if="${mesas.empty}">
+            <h3>Nenhuma taverna ativa por enquanto...</h3>
+            <p>Use o Swagger ou o frontend em HTML/CSS/JS para criar a sua primeira mesa de jogo!</p>
+        </div>
+    </div>
+</body>
+</html>
